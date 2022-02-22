@@ -13,12 +13,15 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.6.3'
+    implementation "io.jsonwebtoken:jjwt:0.9.1"
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compileOnly('org.springframework.boot:spring-boot-devtools')
-    compileOnly('com.h2database:h2')
+  //  compileOnly('com.h2database:h2')
+    implementation 'mysql:mysql-connector-java:8.0.25'
 
 }
 

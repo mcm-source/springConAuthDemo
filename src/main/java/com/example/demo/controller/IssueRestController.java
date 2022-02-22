@@ -5,13 +5,11 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entities.IssueReport;
 import com.example.demo.repositories.IssueRepository;
+
 
 @RestController
 @RequestMapping("/api/issues")
@@ -33,6 +31,17 @@ public class IssueRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(issueReportOptional.get(), HttpStatus.OK);
+    }
+
+
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/create")
+    public  ResponseEntity<IssueReport> newIssue(@RequestBody IssueReport issueReport){
+        return  new ResponseEntity<>(this.issueRepository.save(issueReport),HttpStatus.CREATED);
+
+
+
     }
 }
 
